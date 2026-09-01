@@ -19,7 +19,7 @@ human-readable reason. A shared 0–100 scale and diverging bands (Great ≥80, 
 Fair ≥40, Poor ≥20, Bad <20) keep activities and days comparable; five steps
 because the diverging color scale in the UI needs a true "bad" pole, not just
 a pale "poor". Exact curves, weights
-and vetoes live in `server/src/scoring/activities.ts` — the config table is the
+and vetoes live in `apps/server/src/scoring/activities.ts` — the config table is the
 source of truth; this document records why.
 
 Key sub-decisions:
