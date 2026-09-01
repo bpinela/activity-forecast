@@ -48,6 +48,6 @@ test("a NOT_AVAILABLE cell renders dashed with a reason tooltip", () => {
   renderGrid(INLAND_DAYS);
   const cell = screen.getByRole("button", { name: "Surfing, 2026-08-29: not available" });
   expect(cell).toHaveClass("na");
-  expect(cell).toHaveAttribute("title", expect.stringContaining("No wave data"));
+  expect(cell).toHaveAttribute("title", "Wave data unavailable");
   expect(cell).toHaveTextContent("—");
 });

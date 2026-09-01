@@ -40,6 +40,6 @@ test("NOT_AVAILABLE explains itself without factors", () => {
   if (!score) throw new Error("fixture missing surf score");
   render(<FactorPanel date="2026-08-29" activityIndex={SURF_INDEX} score={score} />);
   expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent("not available");
-  expect(screen.getByText(/No wave data/)).toBeInTheDocument();
+  expect(screen.getByText("Wave data unavailable")).toBeInTheDocument();
   expect(screen.queryByText("Wave height")).not.toBeInTheDocument();
 });

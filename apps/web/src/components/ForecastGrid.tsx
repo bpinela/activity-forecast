@@ -9,9 +9,7 @@ export const ACTIVITIES: { key: Activity; label: string; short: string }[] = [
 ];
 
 export function unavailableReason(activity: Activity): string {
-  return activity === "SURFING"
-    ? "No wave data for this location — likely no surfable coast nearby"
-    : "Not available at this location";
+  return activity === "SURFING" ? "Wave data unavailable" : "Not available at this location";
 }
 
 const weekdayFmt = new Intl.DateTimeFormat("en", { weekday: "short" });
