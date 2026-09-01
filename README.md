@@ -1,5 +1,7 @@
 # Activity Forecast
 
+[![ci](https://github.com/bpinela/activity-forecast/actions/workflows/ci.yml/badge.svg)](https://github.com/bpinela/activity-forecast/actions/workflows/ci.yml)
+
 Type a city or town, get the next 7 days ranked 0–100 for four activities —
 skiing, surfing, outdoor sightseeing, indoor sightseeing — with every score
 explainable down to its weather factors. Node + GraphQL backend, React
@@ -15,10 +17,15 @@ pnpm dev        # Apollo Server on :4000 (GraphiQL) + Vite (5173 or next free po
 ```
 
 ```sh
-pnpm test       # scoring engine + mapper tests (Vitest)
+pnpm test       # scoring engine + mapper tests, web component tests with coverage
 pnpm check      # Biome lint/format + strict tsc across both packages
 pnpm --filter server exec tsx scripts/validate.ts   # live sanity table for known places
 ```
+
+Layout: `apps/server` (GraphQL + scoring) and `apps/web` (React UI). Node and
+pnpm versions are pinned (`.nvmrc`, `engines` + `engine-strict`,
+`packageManager`); CI runs checks, all tests and the web build on every push
+and PR.
 
 ## How it works
 
