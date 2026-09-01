@@ -9,7 +9,6 @@ export function useLocationSearch(query: string) {
     queryFn: () => searchLocations(trimmed),
     enabled: trimmed.length > 0,
     staleTime: 5 * 60_000,
-    retry: 1,
   });
 }
 
@@ -22,6 +21,5 @@ export function useActivityForecast(location: Location | null) {
     },
     enabled: location !== null,
     staleTime: 5 * 60_000,
-    retry: 1,
   });
 }
