@@ -7,10 +7,11 @@ import type {
 } from "./types";
 
 export function labelFor(score: number): ScoreLabel {
-  if (score >= 80) return "EXCELLENT";
+  if (score >= 80) return "GREAT";
   if (score >= 60) return "GOOD";
   if (score >= 40) return "FAIR";
-  return "POOR";
+  if (score >= 20) return "POOR";
+  return "BAD";
 }
 
 export function scoreActivity(config: ActivityConfig, day: DailyInputs): ActivityResult {

@@ -15,8 +15,10 @@ trade-offs hidden inside penalty sizes).
 Each activity defines weighted factors. A factor maps one daily measurement to
 0–1 through a trapezoid "ideal range" curve; the day's score is
 `round(100 × Σ weight · factor)`; vetoes then cap the score with a
-human-readable reason. Shared 0–100 scale and bands (Excellent ≥80, Good ≥60,
-Fair ≥40, Poor <40) keep activities and days comparable. Exact curves, weights
+human-readable reason. A shared 0–100 scale and diverging bands (Great ≥80, Good ≥60,
+Fair ≥40, Poor ≥20, Bad <20) keep activities and days comparable; five steps
+because the diverging color scale in the UI needs a true "bad" pole, not just
+a pale "poor". Exact curves, weights
 and vetoes live in `server/src/scoring/activities.ts` — the config table is the
 source of truth; this document records why.
 

@@ -14,8 +14,9 @@ here instead of built.
   candidates (name, region, country, population); the user picks one. No matches
   is a "no places found" state, not an error.
 - **Score grid.** For the chosen place: 4 activities × 7 days, each cell a 0–100
-  score with a band (Excellent ≥80 / Good ≥60 / Fair ≥40 / Poor <40). Best day
-  per activity is highlighted. Ranking days = sorting cells; no extra API field.
+  score with a band on a diverging scale (Great ≥80 / Good ≥60 / Fair ≥40 /
+  Poor ≥20 / Bad <20). Best day per activity is highlighted. Ranking days =
+  sorting cells; no extra API field.
 - **Every score is explainable.** A cell opens a breakdown: the factors behind
   the score (measured value, unit, weight, sub-score) and any veto that capped it
   ("thunderstorm risk", "no snow cover").

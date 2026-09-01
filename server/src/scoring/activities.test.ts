@@ -42,7 +42,7 @@ describe("surfing", () => {
     const day = makeDay({ marine: { waveHeightMaxM: 2, wavePeriodMaxS: 12 }, windMaxKmh: 8 });
     const s = scored(scoreDay(day).SURFING);
     expect(s.score).toBeGreaterThanOrEqual(90);
-    expect(s.label).toBe("EXCELLENT");
+    expect(s.label).toBe("GREAT");
   });
 
   it("treats a flat ocean as unsurfable even in perfect weather", () => {
@@ -107,7 +107,7 @@ describe("indoor sightseeing", () => {
 
     const storm = scoreDay(makeDay({ weatherCode: 95 }));
     expect(scored(storm.INDOOR_SIGHTSEEING).score).toBeGreaterThanOrEqual(90);
-    expect(scored(storm.INDOOR_SIGHTSEEING).label).toBe("EXCELLENT");
+    expect(scored(storm.INDOOR_SIGHTSEEING).label).toBe("GREAT");
   });
 
   it("explains itself through a single complement factor", () => {
