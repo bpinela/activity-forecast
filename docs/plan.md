@@ -139,6 +139,35 @@ tempMax ≥38 →30; tempMax ≤−12 →30. Indoor — none.
   assumptions summary, links to spec/PDRs/ADRs/PRs, what was cut and why.
 - [ ] `pnpm check && pnpm test` green at root; fresh-clone run-through.
 
+## Task 5 — Slice 4: workspace hardening (`slice/workspace-hardening`, draft PR)
+
+Added after submission-ready: adopt the structural conventions from my earlier
+prototype — apps/ layout, frontend tests, Node version enforcement, CI.
+
+- [ ] `git mv server apps/server && git mv web apps/web`; workspace glob
+  becomes `apps/*`; both `tsconfig.json` extends hop up one level; reinstall
+  so the lockfile importers follow. Package names stay `server`/`web`, so all
+  `--filter` commands keep working.
+- [ ] Node enforcement: `.nvmrc` (24), `engines.node >=24` + `packageManager`
+  (pnpm) in root `package.json`, `engine-strict=true` in `.npmrc`.
+- [ ] Frontend tests (reverses the earlier cut — the graphql-request relative
+  URL bug lived exactly in this seam): Vitest + Testing Library + jsdom in
+  `apps/web`. Mock at the `api/client` module boundary; stub `matchMedia` per
+  test to pick the wide/narrow layout; wrap renders in a fresh QueryClient.
+  Suites: App states (idle examples, loading, resolved place + "not it?"
+  alternatives, not-found, error alert, cell → factor panel), grid (★ best
+  day, transposed narrow layout, dashed NOT_AVAILABLE cells), factor panel
+  (weights, bars, vetoes, no-data factors), and an endpoint regression test
+  asserting the GraphQL URL is absolute.
+- [ ] Coverage via v8 with 80% thresholds, excluding mount/fixture files.
+- [ ] CI (GitHub Actions): checkout → pnpm via `packageManager` → Node from
+  `.nvmrc` → `pnpm install --frozen-lockfile` → `pnpm check` → `pnpm test` →
+  web production build. Runs on push to main and on PRs.
+- [ ] Deliberately NOT adopted from the prototype: `packages/scoring`
+  extraction — scoring has exactly one consumer here, so a separate package
+  is ceremony; revisit only when a second consumer appears.
+- [ ] Draft PR → merge.
+
 ## PR work-log template (used in all three PRs)
 
 ```
