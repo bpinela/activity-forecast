@@ -1,0 +1,65 @@
+type Query {
+  searchLocations(query: String!, limit: Int! = 5): [Location!]!
+  activityForecast(latitude: Float!, longitude: Float!): ActivityForecast!
+}
+
+type Location {
+  id: ID!
+  name: String!
+  region: String
+  country: String
+  latitude: Float!
+  longitude: Float!
+  elevation: Float
+  population: Int
+}
+
+type ActivityForecast {
+  timezone: String!
+  elevation: Float!
+  days: [DayForecast!]!
+}
+
+type DayForecast {
+  date: String!
+  tempMax: Float
+  tempMin: Float
+  weatherCode: Int
+  activities: [ActivityScore!]!
+}
+
+enum Activity {
+  SKIING
+  SURFING
+  OUTDOOR_SIGHTSEEING
+  INDOOR_SIGHTSEEING
+}
+
+enum ScoreStatus {
+  SCORED
+  NOT_AVAILABLE
+}
+
+enum ScoreLabel {
+  EXCELLENT
+  GOOD
+  FAIR
+  POOR
+}
+
+type ActivityScore {
+  activity: Activity!
+  status: ScoreStatus!
+  score: Int
+  label: ScoreLabel
+  factors: [FactorScore!]!
+  vetoes: [String!]!
+}
+
+type FactorScore {
+  name: String!
+  unit: String
+  value: Float
+  score: Float
+  weight: Float!
+}
