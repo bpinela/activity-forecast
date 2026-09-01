@@ -46,7 +46,7 @@ export type FactorResult = {
   weight: number;
 };
 
-export type ScoreLabel = "EXCELLENT" | "GOOD" | "FAIR" | "POOR";
+export type ScoreLabel = "GREAT" | "GOOD" | "FAIR" | "POOR" | "BAD";
 
 export type ActivityResult =
   | {
