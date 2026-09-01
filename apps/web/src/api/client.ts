@@ -2,7 +2,9 @@ import { GraphQLClient, gql } from "graphql-request";
 import type { ActivityForecast, Location } from "./types";
 
 // graphql-request v7 does `new URL(url)` internally, so a relative endpoint throws
-const client = new GraphQLClient(new URL("/graphql", window.location.origin).href);
+export const endpoint = new URL("/graphql", window.location.origin).href;
+
+const client = new GraphQLClient(endpoint);
 
 const SEARCH_LOCATIONS = gql`
   query SearchLocations($query: String!) {
