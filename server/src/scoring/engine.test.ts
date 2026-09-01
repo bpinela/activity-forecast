@@ -83,14 +83,16 @@ describe("scoreActivity", () => {
 });
 
 describe("labelFor", () => {
-  it("maps scores to bands at 80/60/40", () => {
-    expect(labelFor(100)).toBe("EXCELLENT");
-    expect(labelFor(80)).toBe("EXCELLENT");
+  it("maps scores to the diverging bands at 80/60/40/20", () => {
+    expect(labelFor(100)).toBe("GREAT");
+    expect(labelFor(80)).toBe("GREAT");
     expect(labelFor(79)).toBe("GOOD");
     expect(labelFor(60)).toBe("GOOD");
     expect(labelFor(59)).toBe("FAIR");
     expect(labelFor(40)).toBe("FAIR");
     expect(labelFor(39)).toBe("POOR");
-    expect(labelFor(0)).toBe("POOR");
+    expect(labelFor(20)).toBe("POOR");
+    expect(labelFor(19)).toBe("BAD");
+    expect(labelFor(0)).toBe("BAD");
   });
 });
