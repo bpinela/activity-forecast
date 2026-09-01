@@ -41,11 +41,12 @@ weights and vetoes with their reasoning live in PDR-001 (scoring slice).
 
 pnpm workspace monorepo:
 
-- `server/` — Node 24, TypeScript strict, Apollo Server 4 standalone, SDL-first
-  schema. Thin typed fetch clients for Open-Meteo geocoding, forecast and marine
-  APIs (native fetch). Pure scoring engine + per-activity config, Vitest.
-- `web/` — Vite + React + TypeScript, TanStack Query + graphql-request, plain
-  CSS. Dev proxy `/graphql` → server, so no CORS handling.
+- `apps/server` — Node 24, TypeScript strict, Apollo Server 4 standalone,
+  SDL-first schema. Thin typed fetch clients for Open-Meteo geocoding, forecast
+  and marine APIs (native fetch). Pure scoring engine + per-activity config,
+  Vitest.
+- `apps/web` — Vite + React + TypeScript, TanStack Query + graphql-request,
+  plain CSS. Dev proxy `/graphql` → server, so no CORS handling.
 
 Stack decisions and their trade-offs are recorded as ADRs when each slice lands
 (ADR-001 Apollo Server, ADR-002 TanStack Query + graphql-request).
