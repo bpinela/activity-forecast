@@ -11,7 +11,7 @@ export type Location = {
 
 export type Activity = "SKIING" | "SURFING" | "OUTDOOR_SIGHTSEEING" | "INDOOR_SIGHTSEEING";
 export type ScoreStatus = "SCORED" | "NOT_AVAILABLE";
-export type ScoreLabel = "EXCELLENT" | "GOOD" | "FAIR" | "POOR";
+export type ScoreLabel = "GREAT" | "GOOD" | "FAIR" | "POOR" | "BAD";
 
 export type FactorScore = {
   name: string;
