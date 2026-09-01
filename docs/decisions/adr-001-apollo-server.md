@@ -1,4 +1,4 @@
-# ADR-001 — GraphQL server: Apollo Server 4
+# ADR-001 — GraphQL server: Apollo Server 5
 
 Status: accepted
 
@@ -6,12 +6,12 @@ Status: accepted
 
 Two queries, no subscriptions, no auth: any spec-compliant server works.
 Candidates: GraphQL Yoga (lighter, minimal setup, GraphiQL built in) and
-Apollo Server 4 (heavier name, more ecosystem). The AI assistant recommended
+Apollo Server 5 (heavier name, more ecosystem). The AI assistant recommended
 Yoga; I overruled it.
 
 ## Decision
 
-Apollo Server 4 in standalone mode, SDL-first (`schema.graphql` read at boot).
+Apollo Server 5 in standalone mode, SDL-first (`schema.graphql` read at boot).
 
 Reason: ecosystem maturity — the boring-technology argument. Documentation
 depth, middleware/plugin surface, error-handling conventions

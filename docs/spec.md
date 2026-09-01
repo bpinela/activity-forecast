@@ -10,9 +10,10 @@ here instead of built.
 
 ## Features
 
-- **Place search with explicit ambiguity.** Typing "Springfield" returns ranked
-  candidates (name, region, country, population); the user picks one. No matches
-  is a "no places found" state, not an error.
+- **Place search with explicit ambiguity.** A search resolves to the top-ranked
+  candidate, named in a "Showing:" line; the other candidates render as
+  "not it?" alternatives one click away. No matches is a "Couldn't find" state,
+  not an error.
 - **Score grid.** For the chosen place: 4 activities × 7 days, each cell a 0–100
   score with a band on a diverging scale (Great ≥80 / Good ≥60 / Fair ≥40 /
   Poor ≥20 / Bad <20). Best day per activity is highlighted. Ranking days =
@@ -21,8 +22,8 @@ here instead of built.
   the score (measured value, unit, weight, sub-score) and any veto that capped it
   ("thunderstorm risk", "no snow cover").
 - **"Not a thing here" is a distinct state, not a low score.** Surfing in Madrid
-  shows "not available — no surfable coast nearby" (detected via null marine
-  data), never a misleading 0/100.
+  shows "Wave data unavailable" (detected via null marine data), never a
+  misleading 0/100.
 - Honest loading (skeleton grid), error (banner + retry) and empty states.
 
 ## Scoring in one paragraph
@@ -41,7 +42,7 @@ weights and vetoes with their reasoning live in PDR-001 (scoring slice).
 
 pnpm workspace monorepo:
 
-- `apps/server` — Node 24, TypeScript strict, Apollo Server 4 standalone,
+- `apps/server` — Node 24, TypeScript strict, Apollo Server 5 standalone,
   SDL-first schema. Thin typed fetch clients for Open-Meteo geocoding, forecast
   and marine APIs (native fetch). Pure scoring engine + per-activity config,
   Vitest.
@@ -59,18 +60,18 @@ type Query {
   activityForecast(latitude: Float!, longitude: Float!): ActivityForecast!
 }
 
-type Location { id: ID!  name: String!  region: String  country: String!  latitude: Float!  longitude: Float!  elevation: Float  population: Int }
+type Location { id: ID!  name: String!  region: String  country: String  latitude: Float!  longitude: Float!  elevation: Float  population: Int }
 type ActivityForecast { timezone: String!  elevation: Float!  days: [DayForecast!]! }
-type DayForecast { date: String!  tempMax: Float!  tempMin: Float!  weatherCode: Int!  activities: [ActivityScore!]! }
+type DayForecast { date: String!  tempMax: Float  tempMin: Float  weatherCode: Int  activities: [ActivityScore!]! }
 type ActivityScore {
   activity: Activity!      # SKIING | SURFING | OUTDOOR_SIGHTSEEING | INDOOR_SIGHTSEEING
   status: ScoreStatus!     # SCORED | NOT_AVAILABLE
   score: Int               # null when NOT_AVAILABLE
-  label: ScoreLabel        # EXCELLENT | GOOD | FAIR | POOR, null when NOT_AVAILABLE
+  label: ScoreLabel        # GREAT | GOOD | FAIR | POOR | BAD, null when NOT_AVAILABLE
   factors: [FactorScore!]!
   vetoes: [String!]!
 }
-type FactorScore { name: String!  value: Float  unit: String  score: Float!  weight: Float! }
+type FactorScore { name: String!  value: Float  unit: String  score: Float  weight: Float! }
 ```
 
 Two-step on purpose: geocoding ambiguity becomes a product feature instead of

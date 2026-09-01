@@ -13,7 +13,7 @@ Requires Node 24+ and pnpm 9+.
 
 ```sh
 pnpm install
-pnpm dev        # Apollo Server on :4000 (GraphiQL) + Vite (5173 or next free port)
+pnpm dev        # Apollo Server on :4000 (Apollo Sandbox) + Vite (5173 or next free port)
 ```
 
 ```sh

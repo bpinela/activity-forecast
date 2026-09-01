@@ -4,7 +4,7 @@
 as a work log, TDD on the scoring engine, ~half-day budget.
 
 **Architecture:** pnpm monorepo (`server/`, `web/`). Pure scoring engine with
-per-activity config tables; Apollo Server 4 resolvers feed it from Open-Meteo;
+per-activity config tables; Apollo Server 5 resolvers feed it from Open-Meteo;
 React UI renders the grid and the per-factor "why".
 
 **Order:** bootstrap (main) → slice 1 scoring → slice 2 API → slice 3 UI →
@@ -105,7 +105,7 @@ tempMax ≥38 →30; tempMax ≤−12 →30. Indoor — none.
   hourly bucket.
 - [ ] `schema.graphql` (SDL from spec) + `resolvers.ts` (parallel fetches,
   scoreDay, GraphQL-safe errors) + `index.ts` (startStandaloneServer :4000).
-- [ ] Smoke via GraphiQL/curl: Springfield candidates, Ericeira forecast,
+- [ ] Smoke via Apollo Sandbox/curl: Springfield candidates, Ericeira forecast,
   Madrid NOT_AVAILABLE — paste results into PR.
 - [ ] ADR-001 (Apollo over Yoga — ecosystem maturity; AI recommended Yoga,
   overruled), PDR-002 (two-step API, NOT_AVAILABLE as status not zero).

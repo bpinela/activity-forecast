@@ -23,7 +23,7 @@ Two packages, one direction of flow:
 ```
 apps/web (React 19 + TanStack Query + graphql-request)
   → POST /graphql (Vite dev proxy → :4000)
-apps/server (Apollo Server 4, SDL-first: src/schema.graphql)
+apps/server (Apollo Server 5, SDL-first: src/schema.graphql)
   → openMeteo.ts   thin typed fetch clients (geocoding / forecast / marine), 8s timeout
   → forecast.ts    pure mapper: merge forecast+marine responses by LOCAL date → DailyInputs[]
   → scoring/       pure engine — all product logic lives here
