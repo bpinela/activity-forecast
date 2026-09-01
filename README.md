@@ -58,12 +58,18 @@ the decisions and their trail kept honest.
   recommendation), ADR-002 TanStack Query.
 - PRs [#1](https://github.com/bpinela/activity-forecast/pull/1) scoring engine,
   [#2](https://github.com/bpinela/activity-forecast/pull/2) GraphQL API,
-  [#3](https://github.com/bpinela/activity-forecast/pull/3) web UI — each PR
-  description is a work log: hypothesis, what the AI proposed, what I
-  accepted/rejected, how it was validated, what was cut. Highlights: a scenario
-  test catching a flat ocean scoring 59, and a Zugspitze investigation that
-  turned out to be an upstream data limitation, documented instead of tuned
-  away.
+  [#3](https://github.com/bpinela/activity-forecast/pull/3) web UI,
+  [#4](https://github.com/bpinela/activity-forecast/pull/4) workspace hardening
+  (apps/ layout, frontend test suite, Node pins, CI) — each PR description is a
+  work log: hypothesis, what the AI proposed, what I accepted/rejected, how it
+  was validated, what was cut. Highlights: a scenario test catching a flat
+  ocean scoring 59, a Zugspitze investigation that turned out to be an upstream
+  data limitation (documented instead of tuned away), and a browser-only
+  graphql-request bug that slipped through the exact seam the frontend-test cut
+  had left open — found in QA, fixed on main, then closed properly by the PR #4
+  suite.
+- [`CLAUDE.md`](CLAUDE.md) — conventions and earned gotchas for AI-assisted
+  sessions in this repo, since AI collaboration is part of how it's built.
 
 ## Key assumptions (full list in the spec)
 
@@ -78,6 +84,8 @@ the decisions and their trail kept honest.
 
 ## Cut on purpose
 
-Caching/rate limiting, GraphQL codegen, automated frontend tests (manual QA
-checklist in PR #3), surf wind direction (needs coastline bearing), hourly
-granularity, deploy, i18n. Reasons live in the spec and PR logs.
+Caching/rate limiting, GraphQL codegen, surf wind direction (needs coastline
+bearing), hourly granularity, deploy, i18n, extracting the scoring engine into
+its own package (it has one consumer). Frontend automated tests were originally
+cut too — that cut was reversed in PR #4 after a browser-only bug escaped
+through exactly that gap. Reasons live in the spec and PR logs.

@@ -93,10 +93,12 @@ Questions I'd normally take to a PM, with the assumption I committed to:
 
 ## Deliberate cuts
 
-Caching/rate limiting, GraphQL codegen (stretch if time remains), automated
-frontend tests (manual QA checklist in the UI PR instead), wind *direction* for
-surf (offshore detection needs coastline bearing), nearby-resort search, hourly
-granularity, unit toggle, deploy, i18n, auth (nothing to protect).
+Caching/rate limiting, GraphQL codegen (stretch if time remains), wind
+*direction* for surf (offshore detection needs coastline bearing),
+nearby-resort search, hourly granularity, unit toggle, deploy, i18n, auth
+(nothing to protect). Automated frontend tests were cut here originally and
+reinstated in slice 4 (PR #4) after a browser-only bug escaped through that
+exact gap.
 
 ## Process
 
@@ -110,5 +112,7 @@ used as a work log (hypothesis → what the AI proposed → what I accepted/reje
 2. `slice/graphql-api` — Apollo server, schema, resolvers, Open-Meteo clients +
    ADR-001, PDR-002 (ambiguity & not-available UX).
 3. `slice/web-ui` — React app + ADR-002.
+4. `slice/workspace-hardening` (added after the first submission pass) —
+   apps/ workspace layout, frontend test suite, Node version pins, CI.
 
 README written last: what this is, how to run it, assumptions.
